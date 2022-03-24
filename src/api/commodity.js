@@ -54,4 +54,43 @@ export default{
             method: 'get',
         })
     },
+    // 8 get comments list by commodity id
+    getCommentList(id, current, limit){
+        return request({
+            url: `/commodity-comment/getInfoList/${id}/${current}/${limit}`,
+            method: 'get'
+        })
+    },
+     // 8 get comments list by commodity id
+    deleteCommentById(id){
+        return request({
+            url: `/commodity-comment/delete/${id}`,
+            method: 'delete'
+        })
+    },
+    getCommentDetail(id){
+        return request({
+            url: `/commodity-comment/getDetail/${id}`,
+            method: 'get'
+        })
+    },
+    editComment(detail){
+        return request({
+            url: `/commodity-comment/editComment`,
+            method: 'post',
+            data: detail
+        })
+    },
+    getLikeList(id, current, limit){
+        return request({
+            url: `/commodity-comment-like/getLikeList/${id}/${current}/${limit}`,
+            method: 'get'
+        })
+    },
+    deleteLike(id){
+        return request({
+            url: `/commodity-comment-like/deleteLikeById/${id}`,
+            method: 'delete'
+        })
+    }
 }

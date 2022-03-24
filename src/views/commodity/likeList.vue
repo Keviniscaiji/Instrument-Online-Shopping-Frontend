@@ -18,22 +18,15 @@
             </template>
         </el-table-column>
 
-        <el-table-column prop="commodityId" label="commodityId"  width="200"/>
-
+       
         <el-table-column prop="userId" label="userId"  width="200"/>
 
-        <el-table-column prop="likeAmount" label="likeAmount"  width="120"/>
+         <el-table-column prop="commentId" label="commentId"  width="200"/>
       
         <el-table-column prop="gmtCreate" label="created Time" width="160"/>
 
         <el-table-column label="Operation" align="center">
             <template slot-scope="scope">
-            <router-link :to="'/commodity/detail/'+scope.row.id">
-                <el-button type="primary" size="mini" icon="el-icon-edit">Detail</el-button>
-            </router-link>
-            <router-link :to="'/commodity/likeList/'+scope.row.id">
-                <el-button type="primary" size="mini" icon="el-icon-edit">LikeList</el-button>
-            </router-link>
             <el-button type="danger" size="mini" icon="el-icon-delete" @click="removeDataById(scope.row.id)">Delete</el-button>
             </template>
         </el-table-column>
@@ -74,7 +67,7 @@ export default{
         getList(page = 1){
             this.page = page
             // console.log(this.page)
-            commodity.getCommentList(this.id, this.page, this.limit)
+            commodity.getLikeList(this.id, this.page, this.limit)
                 .then(response => {
                     // response接口返回的数据
                     // console.log(response)
@@ -93,7 +86,7 @@ export default{
                 cancelButtonText: 'cancel',
                 type: 'warning'
             }).then(() => {
-                commodity.deleteCommentById(id)
+                commodity.deleteLike(id)
                 .then(response => {
                     // 提示信息
                     this.$message({
