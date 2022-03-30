@@ -52,6 +52,7 @@
             {{ (page - 1) * limit + scope.$index + 1 }}
             </template>
         </el-table-column>
+         <el-table-column prop="id" label="userId" width="200" />
 
         <el-table-column prop="username" label="name" width="80" />
 

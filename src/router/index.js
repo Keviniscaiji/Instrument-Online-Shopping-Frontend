@@ -140,6 +140,54 @@ export const constantRouterMap = [
         ]
     },
     {
+        path: '/post',
+        component: Layout,
+        redirect: '/post/list',
+        name: 'Post',
+        meta: { title: 'Post', icon: 'example' },
+        alwaysShow: true,
+        children: [{
+                path: 'list',
+                name: 'List',
+                component: () =>
+                    import ('@/views/post/list'),
+                meta: { title: 'List', icon: 'user' }
+            },
+            {
+                path: 'info/:id',
+                name: 'PostInfo',
+                component: () =>
+                    import ('@/views/post/info'),
+                meta: { title: 'PostInfo', icon: 'form' },
+                hidden: true
+            },
+            {
+                path: 'comment/:id',
+                name: 'Manage Comment',
+                component: () =>
+                    import ('@/views/post/comment'),
+                meta: { title: 'Comment', icon: 'form' },
+                hidden: true
+            },
+            {
+                path: 'detail/:id',
+                name: 'Comment Detail',
+                component: () =>
+                    import ('@/views/post/detail'),
+                meta: { title: 'Detail', icon: 'form' },
+                hidden: true
+            },
+            {
+                path: 'likeList/:id',
+                name: 'Manage likeList',
+                component: () =>
+                    import ('@/views/post/likeList'),
+                meta: { title: 'likeList', icon: 'form' },
+                hidden: true
+            }
+        ]
+    },
+    {
         path: 'swagger',
         component: Layout,
         children: [{

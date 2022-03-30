@@ -71,6 +71,7 @@
             </template>
         </el-table-column>
 
+        <el-table-column prop="id" label="commodityId" width="200" />
         <el-table-column prop="name" label="name" width="80" />
 
         <el-table-column label="type" width="80">
@@ -98,7 +99,7 @@
                 <el-button type="primary" size="mini" icon="el-icon-edit">EditIntro</el-button>
             </router-link>
             <router-link :to="'/commodity/comment/'+scope.row.id">
-                <el-button type="info" size="mini" icon="el-icon-message">Manage</el-button>
+                <el-button type="info" size="mini" icon="el-icon-message">CommentList</el-button>
             </router-link>
             <el-button type="danger" size="mini" icon="el-icon-delete" @click="removeDataById(scope.row.id)">Delete</el-button>
             </template>

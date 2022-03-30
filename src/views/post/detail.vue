@@ -2,7 +2,7 @@
 
   <div class="app-container">
 
-    <h2 style="text-align: center;">Comment Detail</h2>
+    <h2 style="text-align: center;">Post Comment Detail</h2>
 
 
     <el-form label-width="120px">
@@ -13,12 +13,13 @@
     </el-form>
     <div>
         <el-button :disabled="saveBtnDisabled" type="primary" @click="next">Save</el-button>
+        <el-button :disabled="saveBtnDisabled" type="warning" @click="back">Back</el-button>
     </div>
 
   </div>
 </template>
 <script>
-import commodity from '@/api/commodity'
+import post from '@/api/post'
 import Tinymce from '@/components/Tinymce'
 export default {
     components: { Tinymce },
@@ -28,6 +29,7 @@ export default {
             detail:{
                 id: '',
                 content: '',
+                postId: '',
             },
             id: ''
         }
@@ -50,7 +52,7 @@ export default {
         },
         //添加课程
         addIntro() {
-            commodity.editComment(this.detail)
+            post.editComment(this.detail)
                 .then(response => {
                     //提示
                     this.$message({
@@ -58,15 +60,16 @@ export default {
                         message: 'Added Successful!'
                     });
                     //跳转到第二步
-                    this.$router.push({path:'/commodity/list/'})
+                    this.$router.push({path:'/post/list/'})
                 })
         },
         // 获取回显数据
         getInfo(){
             console.log(this.detail)
-            commodity.getCommentDetail(this.id)
+            post.getCommentDetail(this.id)
                 .then(response => {
                     // console.log(response.data)
+                    this.detail.postId = response.data.detail.postId
                     this.detail.id = response.data.detail.id
                     this.detail.content = response.data.detail.content
                 })
@@ -75,6 +78,11 @@ export default {
         next() {
             //跳转到第二步
             this.addIntro()
+            // this.$router.push({path:'/commodity/publish/'+this.commodityId})
+        },
+          back() {
+            //跳转到第二步
+            this.$router.push({path:'/post/comment/' + this.detail.postId})
             // this.$router.push({path:'/commodity/publish/'+this.commodityId})
         },
     },

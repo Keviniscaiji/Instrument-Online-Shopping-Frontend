@@ -1,6 +1,6 @@
 <template>
     <div class="app-container">
-        <h1>Comment Like List</h1>
+        <h1>Post Comment Like List</h1>
 
         <!-- 表格 -->
         <el-table
@@ -21,7 +21,7 @@
        
         <el-table-column prop="userId" label="userId"  width="200"/>
 
-         <el-table-column prop="commentId" label="commentId"  width="200"/>
+         <el-table-column prop="postCommentId" label="postCommentId"  width="200"/>
       
         <el-table-column prop="gmtCreate" label="created Time" width="160"/>
 
@@ -45,8 +45,7 @@
 </template>
 
 <script>
-// commodity.js文件
-import commodity from '@/api/commodity'
+import post from '@/api/post'
 export default{
     // 写核心代码位置
     data() { // 定义变量和初始值
@@ -67,7 +66,7 @@ export default{
         getList(page = 1){
             this.page = page
             // console.log(this.page)
-            commodity.getLikeList(this.id, this.page, this.limit)
+            post.getLikeList(this.id, this.page, this.limit)
                 .then(response => {
                     // response接口返回的数据
                     // console.log(response)
@@ -86,7 +85,7 @@ export default{
                 cancelButtonText: 'cancel',
                 type: 'warning'
             }).then(() => {
-                commodity.deleteLike(id)
+                post.deleteLike(id)
                 .then(response => {
                     // 提示信息
                     this.$message({
