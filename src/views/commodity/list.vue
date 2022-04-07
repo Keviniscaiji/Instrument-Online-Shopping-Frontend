@@ -74,19 +74,25 @@
         <el-table-column prop="id" label="commodityId" width="200" />
         <el-table-column prop="name" label="name" width="80" />
 
-        <el-table-column label="type" width="80">
-            <template slot-scope="scope">
-            {{ scope.row.type===0?'piano':'guitar' }}
+        <el-table-column label="type" width="90">
+            <template slot-scope="scope">    
+                <div v-if="scope.row.type === 0">Pipes</div>
+                <div v-if="scope.row.type === 1">Electronic</div>
+                <div v-if="scope.row.type === 2">Precussion</div>
+                <div v-if="scope.row.type === 3">Piano</div>
+                <div v-if="scope.row.type === 4">Guitar</div>
+                <div v-if="scope.row.type === 5">Others</div>
             </template>
         </el-table-column>
 
-        <el-table-column prop="price" label="price"  width="80"/>
+        <el-table-column prop="price" label="price" width="60"/>
 
-        <el-table-column prop="amount" label="amount"  width="80"/>
+        <el-table-column prop="amount" label="amount" width="75"/>
 
-        <el-table-column prop="buyAmount" label="buy"  width="80"/>
-        <el-table-column prop="collectAmount" label="collect"  width="80"/>
-        <el-table-column prop="visitAmount" label="visit"  width="80"/>
+        <el-table-column prop="buyAmount" label="buy" width="60"/>
+        <el-table-column prop="collectAmount" label="collect" width="70"/>
+        <el-table-column prop="visitAmount" label="visit" width="60"/>
+        <el-table-column prop="likeAmount" label="like" width="60"/>
 
         <el-table-column prop="gmtCreate" label="created Time" width="160"/>
 
@@ -100,6 +106,9 @@
             </router-link>
             <router-link :to="'/commodity/comment/'+scope.row.id">
                 <el-button type="info" size="mini" icon="el-icon-message">CommentList</el-button>
+            </router-link>
+            <router-link :to="'/commodity/Likes/'+scope.row.id">
+                <el-button type="info" size="mini" icon="el-icon-message">LikeList</el-button>
             </router-link>
             <el-button type="danger" size="mini" icon="el-icon-delete" @click="removeDataById(scope.row.id)">Delete</el-button>
             </template>

@@ -131,10 +131,18 @@ export const constantRouterMap = [
             },
             {
                 path: 'likeList/:id',
-                name: 'Manage likeList',
+                name: 'Manage Comment likeList',
                 component: () =>
                     import ('@/views/commodity/likeList'),
                 meta: { title: 'likeList', icon: 'form' },
+                hidden: true
+            },
+            {
+                path: 'likes/:id',
+                name: 'Manage Commodity likeList',
+                component: () =>
+                    import ('@/views/commodity/likes'),
+                meta: { title: 'likes', icon: 'form' },
                 hidden: true
             }
         ]

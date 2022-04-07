@@ -20,8 +20,12 @@
 
           <el-form-item label="Type">
             <el-select v-model="commodityBasicInfoDto.type" clearable placeholder="type">
-            <el-option :value="0" label="piano"/>
-            <el-option :value="1" label="guitar"/>
+            <el-option :value="0" label="Pipes"/>
+            <el-option :value="1" label="Electronic"/>
+            <el-option :value="2" label="Precussion"/>
+            <el-option :value="3" label="Piano"/>
+            <el-option :value="4" label="Guitar"/>
+            <el-option :value="5" label="Others"/>
             </el-select>
         </el-form-item>
 
@@ -128,7 +132,7 @@ export default {
                         message: 'Edit successful!'
                     });
                     //跳转到第二步
-                    this.$router.push({path:'/commodity/intro/'+response.data.commodityId})
+                    this.$router.push({path:'/commodity/intro/'+this.commodityId})
                 })
         },
         saveOrUpdate() {

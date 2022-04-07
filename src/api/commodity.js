@@ -92,5 +92,17 @@ export default{
             url: `/commodity-comment-like/deleteLikeById/${id}`,
             method: 'delete'
         })
+    },
+    getCommodityLikeList(id, current, limit){
+        return request({
+            url: `/commodity-like/getLikeList/${id}/${current}/${limit}`,
+            method: 'get'
+        })
+    },
+    deleteCommodityLike(id){
+        return request({
+            url: `/commodity-like/deleteLikeById/${id}`,
+            method: 'delete'
+        })
     }
 }
