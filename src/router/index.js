@@ -196,6 +196,29 @@ export const constantRouterMap = [
         ]
     },
     {
+        path: '/sta',
+        component: Layout,
+        redirect: '/sta/create',
+        name: 'Statistical',
+        meta: { title: 'Statistical', icon: 'example' },
+        children: [{
+                path: 'create',
+                name: 'Create Data',
+                component: () =>
+                    import ('@/views/sta/create'),
+                meta: { title: 'Create Data', icon: 'table' }
+            },
+            {
+                path: 'show',
+                name: 'Charts',
+                component: () =>
+                    import ('@/views/sta/show'),
+                meta: { title: 'Charts', icon: 'tree' },
+            }
+        ],
+    },
+
+    {
         path: 'swagger',
         component: Layout,
         children: [{
