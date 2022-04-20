@@ -195,6 +195,31 @@ export const constantRouterMap = [
             }
         ]
     },
+    // order
+    {
+        path: '/order',
+        component: Layout,
+        redirect: '/order/list',
+        name: 'Order',
+        meta: { title: 'Order', icon: 'example' },
+        alwaysShow: true,
+        children: [{
+                path: 'list',
+                name: 'List',
+                component: () =>
+                    import ('@/views/order/list'),
+                meta: { title: 'List', icon: 'user' }
+            },
+            {
+                path: 'edit/:id',
+                name: 'Edit',
+                component: () =>
+                    import ('@/views/order/edit'),
+                meta: { title: 'Edit', icon: 'form' },
+                hidden: true
+            }
+        ]
+    },
     {
         path: '/sta',
         component: Layout,

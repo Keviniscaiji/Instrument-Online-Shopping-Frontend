@@ -22,7 +22,7 @@
             <el-select v-model="commodityBasicInfoDto.type" clearable placeholder="type">
             <el-option :value="0" label="Pipes"/>
             <el-option :value="1" label="Electronic"/>
-            <el-option :value="2" label="Precussion"/>
+            <el-option :value="2" label="Percussion"/>
             <el-option :value="3" label="Piano"/>
             <el-option :value="4" label="Guitar"/>
             <el-option :value="5" label="Others"/>

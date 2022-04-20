@@ -15,4 +15,11 @@ export default{
             method: 'get',
         })
     },
+    // 3 获取饼状图统计数据
+    getDataStaPie(searchObjPie){
+        return request({
+            url: `/statistics-daily/showPieData/${searchObjPie.day}`,
+            method: 'get',
+        })
+    },
 }

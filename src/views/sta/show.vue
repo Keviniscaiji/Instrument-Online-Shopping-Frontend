@@ -33,9 +33,28 @@
         @click="showChart()">Search</el-button>
     </el-form>
 
-    <div class="chart-container">
-      <div id="chart" class="chart" style="height:500px;width:100%" />
+    <div class="chart-container1">
+      <div id="chart1" class="chart" style="height:500px;width:100%" />
     </div>
+
+     <el-form :inline="true" class="demo-form-inline">
+      <el-form-item>
+        <el-date-picker
+          v-model="searchObjPie.day"
+          type="date"
+          placeholder="Date"
+          value-format="yyyy-MM-dd" />
+      </el-form-item>
+      <el-button
+        :disabled="btnDisabledPie"
+        type="primary"
+        icon="el-icon-search"
+        @click="showChartPie()">Search</el-button>
+    </el-form>
+    <div class="chart-container2">
+      <div id="chart2" class="chart" style="height:500px;width:100%" />
+    </div>
+
   </div>
 </template>
 <script>
@@ -46,9 +65,12 @@ export default {
     data() {
         return {
             searchObj:{},
+            searchObjPie:{},
             btnDisabled:false,
+            btnDisabledPie:false,
             xData:[],
-            yData:[]
+            yData:[],
+            dataPie:[],
         }
     },
     methods:{
@@ -57,16 +79,73 @@ export default {
                 .then(response => {
                     this.yData = response.data.numDataList
                     this.xData = response.data.date_calculatedList
-
+                    // console.log(response.data)
                     //调用下面生成图表的方法，改变值
                     this.setChart()
                 })
         },
+        showChartPie() {
+            staApi.getDataStaPie(this.searchObjPie)
+                .then(response => {
+                    var len = response.data.typeList.length
+                    for(let i = 1; i < len; i++){
+                        var Obj = new Object();
+                        Obj.name = response.data.typeList[i];
+                        Obj.value = response.data.dataList[i]
+                        this.dataPie[i] = Obj;
+                    }
+                    // console.log(response.data)
+                    //调用下面生成图表的方法，改变值
+
+                    
+                    this.setChartPie()
+                })
+        },
+        setChartPie(){
+            this.chart = echarts.init(document.getElementById('chart2'))
+             
+            console.log(this.dataPie)
+            var option = {
+                title: {
+                    text: 'Cart statistics',
+                    x: 'center'
+                },
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+                legend: {
+                    orient: 'vertical',
+                    left: 'left',
+                    data: []
+                },
+                color: ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272'],
+                // 区域缩放
+                // 系列列表。每个系列通过 type 决定自己的图表类型
+                series: [{
+                    // 系列中的数据内容数组
+                    name: "Cart statistics",
+                    data: this.dataPie,
+                    // 折线图
+                    type: 'pie',
+                    // radius : '55%',
+                    // center: ['50%', '60%'],
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }]
+            }
+
+            this.chart.setOption(option)
+        },
         setChart() {
             // 基于准备好的dom，初始化echarts实例
-            this.chart = echarts.init(document.getElementById('chart'))
+            this.chart = echarts.init(document.getElementById('chart1'))
             // console.log(this.chart)
-
             // 指定图表的配置项和数据
             var option = {
                 title: {
