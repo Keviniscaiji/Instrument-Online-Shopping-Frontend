@@ -47,10 +47,9 @@ export default {
       //   location.reload() // 为了重新实例化vue-router对象 避免bug
       // })
       // console.log("1243s")
-      cookie.remove('Admin-Token')
-      // cookie.set('Admin-Token', '',{domain: 'localhost'})
-      location.reload()
-      this.$router.push({path:'/banner/list'})
+      this.$store.dispatch('FedLogOut').then(() => {
+        location.reload()
+      })
     }
   }
 }

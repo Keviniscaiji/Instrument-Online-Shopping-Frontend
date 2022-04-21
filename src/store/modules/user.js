@@ -1,9 +1,9 @@
-import { login, logout, getInfo } from '@/api/login'
-import { getToken, setToken, removeToken } from '@/utils/auth'
+import { logout, pugeInfo } from '@/api/login'
+import {  setPugeToken, getPugeToken, removePugeToken, setPugeUserInfo, removePugeUserInfo } from '@/utils/auth'
 
 const user = {
   state: {
-    token: getToken(),
+    token: getPugeToken(),
     name: '',
     avatar: '',
     roles: []
@@ -13,8 +13,8 @@ const user = {
     SET_TOKEN: (state, token) => {
       state.token = token
     },
-    SET_NAME: (state, name) => {
-      state.name = name
+    SET_NAME: (state, pugeUser) => {
+      state.pugeUser = pugeUser
     },
     SET_AVATAR: (state, avatar) => {
       state.avatar = avatar
@@ -26,35 +26,37 @@ const user = {
 
   actions: {
     // 登录
-    Login({ commit }, userInfo) {
-      const username = userInfo.username.trim()
+    Login({ commit }, pgtoken) {
       return new Promise((resolve, reject) => {
-        login(username, userInfo.password).then(response => {
-          const data = response.data
-          setToken(data.token)
-          commit('SET_TOKEN', data.token)
-          resolve()
-        }).catch(error => {
-          reject(error)
-        })
+        console.log(127172)
+          setPugeToken(pgtoken);
+          console.log(pgtoken)
+          commit('SET_TOKEN', pgtoken);
+          resolve();
       })
     },
 
     // 获取用户信息
     GetInfo({ commit, state }) {
+      console.log(111)
       return new Promise((resolve, reject) => {
-        getInfo(state.token).then(response => {
-          const data = response.data
-          if (data.roles && data.roles.length > 0) { // 验证返回的roles是否是一个非空数组
-            commit('SET_ROLES', data.roles)
-          } else {
-            reject('getInfo: roles must be a non-null array !')
-          }
-          commit('SET_NAME', data.name)
-          commit('SET_AVATAR', data.avatar)
+        pugeInfo()
+          .then(response => {
+            const data = response.data
+          //   if (data.roles && data.roles.length > 0) { // 验证返回的roles是否是一个非空数组
+          //   commit('SET_ROLES', data.roles)
+          //   } else {
+          //   reject('getInfo: roles must be a non-null array !')
+          //  }
+          // console.log(response.data)
+          // // console.log(data)
+          setPugeUserInfo(data.userInfo)
+          commit('SET_NAME', data.userInfo.nickname)
+          commit('SET_AVATAR', data.userInfo.avatar)
           resolve(response)
         }).catch(error => {
-          reject(error)
+          // console("error user")
+            reject(error)
         })
       })
     },
@@ -64,8 +66,8 @@ const user = {
       return new Promise((resolve, reject) => {
         logout(state.token).then(() => {
           commit('SET_TOKEN', '')
-          commit('SET_ROLES', [])
-          removeToken()
+          removePugeToken();
+          removePugeUserInfo();
           resolve()
         }).catch(error => {
           reject(error)
@@ -75,9 +77,11 @@ const user = {
 
     // 前端 登出
     FedLogOut({ commit }) {
+      console.log("gundanle")
       return new Promise(resolve => {
         commit('SET_TOKEN', '')
-        removeToken()
+        removePugeToken();
+        removePugeUserInfo();
         resolve()
       })
     }

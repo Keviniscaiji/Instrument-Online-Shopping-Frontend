@@ -55,6 +55,33 @@
       <div id="chart2" class="chart" style="height:500px;width:100%" />
     </div>
 
+    <!--表单-->
+    <el-form :inline="true" class="demo-form-inline">
+
+      <el-form-item>
+        <el-date-picker
+          v-model="searchObjBar.begin"
+          type="date"
+          placeholder="start Date"
+          value-format="yyyy-MM-dd" />
+      </el-form-item>
+      <el-form-item>
+        <el-date-picker
+          v-model="searchObjBar.end"
+          type="date"
+          placeholder="end Date"
+          value-format="yyyy-MM-dd" />
+      </el-form-item>
+      <el-button
+        :disabled="btnDisabledBar"
+        type="primary"
+        icon="el-icon-search"
+        @click="showChartBar()">Search</el-button>
+    </el-form>
+
+    <div class="chart-container3">
+      <div id="chart3" class="chart" style="height:500px;width:100%" />
+    </div>
   </div>
 </template>
 <script>
@@ -66,11 +93,20 @@ export default {
         return {
             searchObj:{},
             searchObjPie:{},
+            searchObjBar:{},
             btnDisabled:false,
             btnDisabledPie:false,
+            btnDisabledBar:false,
             xData:[],
             yData:[],
             dataPie:[],
+            barXData: [],
+            barY1Data: [],
+            barY2Data: [],
+            barY3Data: [],
+            barY4Data: [],
+            barY5Data: [],
+            barY6Data: []
         }
     },
     methods:{
@@ -96,10 +132,94 @@ export default {
                     }
                     // console.log(response.data)
                     //调用下面生成图表的方法，改变值
-
-                    
                     this.setChartPie()
                 })
+        },
+        showChartBar() {
+            staApi.getDataStaBar(this.searchObjBar)
+                .then(response => {
+                    this.barY1Data = response.data.type1DataList
+                    this.barY2Data = response.data.type2DataList
+                    this.barY3Data = response.data.type3DataList
+                    this.barY4Data = response.data.type4DataList
+                    this.barY5Data = response.data.type5DataList
+                    this.barY6Data = response.data.type6DataList
+                    this.barXData = response.data.date_calculatedList
+                    // console.log(response.data)
+                    //调用下面生成图表的方法，改变值
+                    this.setChartBar()
+                })
+        },
+        setChartBar() {
+            // 基于准备好的dom，初始化echarts实例
+            this.chart = echarts.init(document.getElementById('chart3'))
+            // console.log(this.chart)
+            // 指定图表的配置项和数据
+            var option = {
+                title: {
+                    text: 'Visited Daily statistics'
+                },
+                legend: {
+                    data: ["Pipes", "Electronic", "Percussion", "Piano", "Guitar", "Others"]
+                },
+               
+                // x轴是类目轴（离散数据）,必须通过data设置类目数据
+                xAxis: {
+                    type: 'category',
+                    data: this.barXData
+                },
+                // y轴是数据轴（连续数据）
+                yAxis: {
+                    type: 'value'
+                },
+                // 系列列表。每个系列通过 type 决定自己的图表类型
+                series: [
+                    {
+                        // 系列中的数据内容数组
+                        data: this.barY1Data,
+                        name: "Pipes",
+                        // 折线图
+                        type: 'bar'
+                    },
+                    {
+                        // 系列中的数据内容数组
+                        data: this.barY2Data,
+                        name: "Electronic",
+                        // 折线图
+                        type: 'bar'
+                    },
+                    {
+                        // 系列中的数据内容数组
+                        data: this.barY3Data,
+                        name: "Percussion",
+                        // 折线图
+                        type: 'bar'
+                    },
+                    {
+                        // 系列中的数据内容数组
+                        data: this.barY4Data,
+                        name: "Piano",
+                        // 折线图
+                        type: 'bar'
+                    },
+                    {
+                        // 系列中的数据内容数组
+                        data: this.barY5Data,
+                        name: "Guitar",
+                        // 折线图
+                        type: 'bar'
+                    },
+                    {
+                        // 系列中的数据内容数组
+                        data: this.barY6Data,
+                        name: "Others",
+                        // 折线图
+                        type: 'bar'
+                    },
+                ]
+            }
+
+            this.chart.setOption(option)
         },
         setChartPie(){
             this.chart = echarts.init(document.getElementById('chart2'))

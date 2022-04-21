@@ -22,4 +22,11 @@ export default{
             method: 'get',
         })
     },
+    // 4 获取柱状图统计数据
+    getDataStaBar(searchObjBar){
+        return request({
+            url: `/statistics-daily/showBarData/${searchObjBar.begin}/${searchObjBar.end}`,
+            method: 'get',
+        })
+    },
 }

@@ -1,21 +1,45 @@
 <template>
   <div class="dashboard-container">
-    <div class="dashboard-text">name:{{ name }}</div>
-    <div class="dashboard-text">roles:<span v-for="role in roles" :key="role">{{ role }}</span></div>
+    <div class="dashboard-text">name: {{ pugeUser.nickname }}</div>
+
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
+import {getPugeUserInfo} from "@/utils/auth"
 
 export default {
   name: 'Dashboard',
-  computed: {
-    ...mapGetters([
-      'name',
-      'roles'
-    ])
-  }
+  // computed: {
+  //   ...mapGetters([
+  //     'name',
+  //     'roles'
+  //   ])
+  // }
+  data() {
+    return {
+      pugeUser: {},
+    }
+  },
+  created() {
+    
+  },
+  mounted() {
+    this.getCookieUserInfo();
+  },
+  methods: {
+    getCookieUserInfo(){
+      var userInfo = getPugeUserInfo();
+      // console.log(userInfo)
+      // console.log(userInfo);
+      if(userInfo){
+        userInfo = JSON.parse(userInfo);
+        this.pugeUser = userInfo;
+      }
+
+    }
+  },
 }
 </script>
 

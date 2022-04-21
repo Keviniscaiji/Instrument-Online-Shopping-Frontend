@@ -3,13 +3,17 @@ import store from './store'
 import NProgress from 'nprogress' // Progress 进度条
 import 'nprogress/nprogress.css'// Progress 进度条样式
 import { Message } from 'element-ui'
-import { getToken } from '@/utils/auth' // 验权
+import { getPugeToken } from '@/utils/auth' // 验权
+import Cookies from 'js-cookie'
 
-const whiteList = ['/login'] // 不重定向白名单
+const whiteList = ['/login', '/middlepage'] // 不重定向白名单
 router.beforeEach((to, from, next) => {
   NProgress.start()
-  if (getToken()) {
+  console.log(getPugeToken())
+  if (getPugeToken()) {
+    console.log(666)
     if (to.path === '/login') {
+      console.log(222)
       next({ path: '/' })
       NProgress.done() // if current page is dashboard will not trigger	afterEach hook, so manually handle it
     } else {

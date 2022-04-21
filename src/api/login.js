@@ -1,13 +1,9 @@
 import request from '@/utils/request'
 
-export function login(username, password) {
+export function loginByUserName(username) {
     return request({
-        url: '/admin/user/login',
-        method: 'post',
-        data: {
-            username,
-            password
-        }
+        url: `/staff/loginByUserName/${username}`,
+        method: 'get',
     })
 }
 
@@ -23,5 +19,13 @@ export function logout() {
     return request({
         url: '/admin/user/logout',
         method: 'post'
+    })
+}
+
+export function pugeInfo(token) {
+    return request({
+        url: '/staff/getMemberInfo',
+        method: 'get',
+        params: { token }
     })
 }
