@@ -38,7 +38,7 @@ const user = {
 
     // 获取用户信息
     GetInfo({ commit, state }) {
-      console.log(111)
+      // console.log(111)
       return new Promise((resolve, reject) => {
         pugeInfo()
           .then(response => {

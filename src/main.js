@@ -14,8 +14,11 @@ import store from './store'
 
 import '@/icons' // icon
 import '@/permission' // permission control
+import infiniteScroll from "vue-infinite-scroll";
+
 
 Vue.use(ElementUI, { locale })
+Vue.use(infiniteScroll);
 
 Vue.config.productionTip = false
 

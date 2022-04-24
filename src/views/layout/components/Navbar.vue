@@ -2,6 +2,33 @@
   <el-menu class="navbar" mode="horizontal">
     <hamburger :toggle-click="toggleSideBar" :is-active="sidebar.opened" class="hamburger-container"/>
     <breadcrumb />
+    <!-- <el-dropdown class="avatar-container2" trigger="click"> -->
+    <el-button class="avatar-container2" @click="getChatList" type="primary">
+          ChatList
+    </el-button>
+    <el-drawer
+      title="Chat List"
+      :visible.sync="drawer"
+      :with-header="false"
+       size="50%">
+      <el-table
+        :data="userList"
+        border
+        fit
+        highlight-current-row>
+        <el-table-column prop="userId" label="userId" width="200"></el-table-column>
+        <el-table-column prop="username" label="username" width="100"></el-table-column>
+        <el-table-column prop="gmtCreate" label="time" width="200"></el-table-column>
+          <el-table-column label="Operation" align="center">
+            <template slot-scope="scope">
+            <router-link :to="'/chat/container/'+scope.row.userId">
+                <el-button type="primary" size="mini" icon="el-icon-edit">Chat</el-button>
+            </router-link>
+            </template>
+        </el-table-column>
+     </el-table>
+    </el-drawer>
+    <!-- </el-dropdown> -->
     <el-dropdown class="avatar-container" trigger="click">
       <div class="avatar-wrapper">
         <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
@@ -25,9 +52,17 @@
 import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
-import cookie from 'js-cookie'
+import chat from '@/api/chat'
+import {getPugeUserInfo} from "@/utils/auth"
 
 export default {
+  data() {
+    return {
+      drawer: false,
+      pugeUser: {},
+      userList: {}
+    }
+  },
   components: {
     Breadcrumb,
     Hamburger
@@ -50,7 +85,25 @@ export default {
       this.$store.dispatch('FedLogOut').then(() => {
         location.reload()
       })
+    },
+    getChatList(){
+      var userInfo = getPugeUserInfo();
+      // console.log(userInfo)
+      // console.log(userInfo);
+      if(userInfo){
+        userInfo = JSON.parse(userInfo);
+        this.pugeUser = userInfo;
+      }
+      const id = this.pugeUser.id
+      console.log(id)
+      chat.getChatList(id)
+        .then(response => {
+            this.userList = response.data.userList
+            console.log(this.userList)
+            this.drawer = true
+        })
     }
+    
   }
 }
 </script>
@@ -72,11 +125,40 @@ export default {
     top: 16px;
     color: red;
   }
+  .chatlist {
+    height: 50px;
+    display: inline-block;
+    position: absolute;
+    right: 35px;
+  }
   .avatar-container {
     height: 50px;
     display: inline-block;
     position: absolute;
     right: 35px;
+    .avatar-wrapper {
+      cursor: pointer;
+      margin-top: 5px;
+      position: relative;
+      line-height: initial;
+      .user-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+      }
+      .el-icon-caret-bottom {
+        position: absolute;
+        right: -20px;
+        top: 25px;
+        font-size: 12px;
+      }
+    }
+  }
+  .avatar-container2 {
+    height: 50px;
+    display: inline-block;
+    position: absolute;
+    right: 120px;
     .avatar-wrapper {
       cursor: pointer;
       margin-top: 5px;

@@ -11,12 +11,6 @@ import {getPugeUserInfo} from "@/utils/auth"
 
 export default {
   name: 'Dashboard',
-  // computed: {
-  //   ...mapGetters([
-  //     'name',
-  //     'roles'
-  //   ])
-  // }
   data() {
     return {
       pugeUser: {},

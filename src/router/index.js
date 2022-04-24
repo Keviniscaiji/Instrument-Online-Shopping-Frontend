@@ -244,9 +244,34 @@ export const constantRouterMap = [
             }
         ],
     },
+    {
+        path: '/chat',
+        component: Layout,
+        redirect: '/chat/container',
+        name: 'Chat',
+        alwaysShow: true,
+        meta: { title: 'Chat', icon: 'example' },
+        children: [{
+                path: 'container/:id',
+                name: 'container',
+                component: () =>
+                    import ('@/views/chat/container'),
+                meta: { title: 'Chat', icon: 'table' }
+            },
+            // {
+            //     path: 'show',
+            //     name: 'Charts',
+            //     component: () =>
+            //         import ('@/views/sta/show'),
+            //     meta: { title: 'Charts', icon: 'tree' },
+            // }
+        ],
+        hidden: true
+    },
+
 
     {
-        path: 'swagger',
+        path: '/swagger',
         component: Layout,
         children: [{
             path: process.env.BASE_API + '/swagger-ui.html',
@@ -255,7 +280,7 @@ export const constantRouterMap = [
     },
 
     {
-        path: 'Druid Monitor',
+        path: '/Druid Monitor',
         component: Layout,
         children: [{
             path: process.env.BASE_API + '/druid/index.html',
@@ -264,7 +289,7 @@ export const constantRouterMap = [
     },
 
     {
-        path: 'external-link',
+        path: '/external-link',
         component: Layout,
         children: [{
             path: 'http://175.178.116.88/group13/staff-portal-front-end',
@@ -278,7 +303,7 @@ export const constantRouterMap = [
 ]
 
 export default new Router({
-    mode: 'history', //后端支持可开
+    // mode: 'history', //后端支持可开
     scrollBehavior: () => ({ y: 0 }),
     routes: constantRouterMap
 })

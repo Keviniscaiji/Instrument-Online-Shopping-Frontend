@@ -11,9 +11,9 @@ router.beforeEach((to, from, next) => {
   NProgress.start()
   console.log(getPugeToken())
   if (getPugeToken()) {
-    console.log(666)
+    // console.log(666)
     if (to.path === '/login') {
-      console.log(222)
+      // console.log(222)
       next({ path: '/' })
       NProgress.done() // if current page is dashboard will not trigger	afterEach hook, so manually handle it
     } else {
