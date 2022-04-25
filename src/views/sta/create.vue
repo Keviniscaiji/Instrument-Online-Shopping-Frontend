@@ -15,7 +15,7 @@
       <el-button
         :disabled="btnDisabled"
         type="primary"
-        @click="create()">Create</el-button>
+        @click="create()">{{ $t('button.Create') }}</el-button>
     </el-form>
 
   </div>

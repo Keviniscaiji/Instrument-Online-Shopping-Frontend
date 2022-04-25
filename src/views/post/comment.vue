@@ -29,12 +29,12 @@
         <el-table-column label="Operation" align="center">
             <template slot-scope="scope">
             <router-link :to="'/post/detail/'+scope.row.id">
-                <el-button type="primary" size="mini" icon="el-icon-edit">Detail</el-button>
+                <el-button type="primary" size="mini" icon="el-icon-edit">{{ $t('button.Detail') }}</el-button>
             </router-link>
             <router-link :to="'/post/likeList/'+scope.row.id">
-                <el-button type="primary" size="mini" icon="el-icon-edit">LikeList</el-button>
+                <el-button type="primary" size="mini" icon="el-icon-edit">{{ $t('button.LikeList') }}</el-button>
             </router-link>
-            <el-button type="danger" size="mini" icon="el-icon-delete" @click="removeDataById(scope.row.id)">Delete</el-button>
+            <el-button type="danger" size="mini" icon="el-icon-delete" @click="removeDataById(scope.row.id)">{{ $t('button.Delete') }}</el-button>
             </template>
         </el-table-column>
         </el-table>

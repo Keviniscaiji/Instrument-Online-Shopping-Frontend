@@ -14,8 +14,8 @@
         </el-form-item>
     </el-form>
     <div>
-        <el-button :disabled="saveBtnDisabled" type="primary" @click="next">Save</el-button>
-        <el-button :disabled="saveBtnDisabled" type="warning" @click="back">Back</el-button>
+        <el-button :disabled="saveBtnDisabled" type="primary" @click="next">{{ $t('button.Save') }}</el-button>
+        <el-button :disabled="saveBtnDisabled" type="warning" @click="back">{{ $t('button.Back') }}</el-button>
     </div>
 
   </div>

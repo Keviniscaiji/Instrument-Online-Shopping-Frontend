@@ -12,7 +12,7 @@
                 <el-input v-model="address.address2"/>
              </el-form-item>
             <el-form-item>
-                <el-button :disabled="saveBtnDisabled" type="primary" @click="changeAddress">Confirm</el-button>
+                <el-button :disabled="saveBtnDisabled" type="primary" @click="changeAddress">{{ $t('button.Confirm') }}</el-button>
             </el-form-item>
         </el-form>
     </div>

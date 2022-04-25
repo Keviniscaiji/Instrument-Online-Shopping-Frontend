@@ -2,9 +2,12 @@
   <el-menu class="navbar" mode="horizontal">
     <hamburger :toggle-click="toggleSideBar" :is-active="sidebar.opened" class="hamburger-container"/>
     <breadcrumb />
+      <template>
+        <lang-select class="avatar-container3"/>
+      </template>
     <!-- <el-dropdown class="avatar-container2" trigger="click"> -->
     <el-button class="avatar-container2" @click="getChatList" type="primary">
-          ChatList
+          {{ $t('button.ChatList') }}
     </el-button>
     <el-drawer
       title="Chat List"
@@ -22,7 +25,7 @@
           <el-table-column label="Operation" align="center">
             <template slot-scope="scope">
             <router-link :to="'/chat/container/'+scope.row.userId">
-                <el-button type="primary" size="mini" icon="el-icon-edit">Chat</el-button>
+                <el-button type="primary" size="mini" icon="el-icon-edit">{{ $t('button.Chat') }}</el-button>
             </router-link>
             </template>
         </el-table-column>
@@ -54,6 +57,7 @@ import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
 import chat from '@/api/chat'
 import {getPugeUserInfo} from "@/utils/auth"
+import LangSelect from '@/components/LangSelect'
 
 export default {
   data() {
@@ -65,7 +69,8 @@ export default {
   },
   components: {
     Breadcrumb,
-    Hamburger
+    Hamburger,
+    LangSelect
   },
   computed: {
     ...mapGetters([
@@ -176,6 +181,13 @@ export default {
         font-size: 12px;
       }
     }
+  }
+  .avatar-container3 {
+    height: 50px;
+    display: inline-block;
+    position: absolute;
+    right: 300px;
+    
   }
 }
 </style>

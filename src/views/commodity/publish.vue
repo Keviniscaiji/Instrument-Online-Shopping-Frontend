@@ -19,8 +19,8 @@
     </div>
 
     <div>
-      <el-button @click="previous">Back To Edit</el-button>
-      <el-button :disabled="saveBtnDisabled" type="primary" @click="publish">Publish</el-button>
+      <el-button @click="previous">{{ $t('button.BackToEdit') }}</el-button>
+      <el-button :disabled="saveBtnDisabled" type="primary" @click="publish">{{ $t('button.Publish') }}</el-button>
     </div>
   </div>
 </template>

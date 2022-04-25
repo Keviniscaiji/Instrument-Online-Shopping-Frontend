@@ -88,9 +88,9 @@
         <el-table-column label="Operation" align="center">
             <template slot-scope="scope">
             <router-link :to="'/order/edit/'+scope.row.id">
-                <el-button type="primary" size="mini" icon="el-icon-edit">Change Address</el-button>
+                <el-button type="primary" size="mini" icon="el-icon-edit">{{ $t('button.ChangeAddress') }}</el-button>
             </router-link>
-            <el-button type="danger" size="mini" icon="el-icon-delete" @click="removeDataById(scope.row.id)">Delete</el-button>
+            <el-button type="danger" size="mini" icon="el-icon-delete" @click="removeDataById(scope.row.id)">{{ $t('button.Delete') }}</el-button>
             </template>
         </el-table-column>
         </el-table>

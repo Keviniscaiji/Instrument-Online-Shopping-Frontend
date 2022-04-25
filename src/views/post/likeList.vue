@@ -27,7 +27,7 @@
 
         <el-table-column label="Operation" align="center">
             <template slot-scope="scope">
-            <el-button type="danger" size="mini" icon="el-icon-delete" @click="removeDataById(scope.row.id)">Delete</el-button>
+            <el-button type="danger" size="mini" icon="el-icon-delete" @click="removeDataById(scope.row.id)">{{ $t('button.Delete') }}</el-button>
             </template>
         </el-table-column>
         </el-table>

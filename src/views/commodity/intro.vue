@@ -18,8 +18,8 @@
         </el-form-item>
     </el-form>
     <div>
-        <el-button @click="previous">Back</el-button>
-        <el-button :disabled="saveBtnDisabled" type="primary" @click="next">Continue</el-button>
+        <el-button @click="previous">{{ $t('button.Back') }}</el-button>
+        <el-button :disabled="saveBtnDisabled" type="primary" @click="next">{{ $t('button.Continue') }}</el-button>
     </div>
 
   </div>

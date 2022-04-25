@@ -136,7 +136,7 @@ export const constantRouterMap = [
                 name: 'Manage Comment likeList',
                 component: () =>
                     import ('@/views/commodity/likeList'),
-                meta: { title: 'likeList', icon: 'form' },
+                meta: { title: 'LikeList', icon: 'form' },
                 hidden: true
             },
             {
@@ -144,7 +144,7 @@ export const constantRouterMap = [
                 name: 'Manage Commodity likeList',
                 component: () =>
                     import ('@/views/commodity/likes'),
-                meta: { title: 'likes', icon: 'form' },
+                meta: { title: 'Likes', icon: 'form' },
                 hidden: true
             }
         ]
@@ -192,7 +192,7 @@ export const constantRouterMap = [
                 name: 'Manage likeList',
                 component: () =>
                     import ('@/views/post/likeList'),
-                meta: { title: 'likeList', icon: 'form' },
+                meta: { title: 'LikeList', icon: 'form' },
                 hidden: true
             }
         ]
@@ -227,13 +227,13 @@ export const constantRouterMap = [
         component: Layout,
         redirect: '/sta/create',
         name: 'Statistical',
-        meta: { title: 'Statistical', icon: 'example' },
+        meta: { title: 'Sta', icon: 'example' },
         children: [{
                 path: 'create',
                 name: 'Create Data',
                 component: () =>
                     import ('@/views/sta/create'),
-                meta: { title: 'Create Data', icon: 'table' }
+                meta: { title: 'CreateData', icon: 'table' }
             },
             {
                 path: 'show',
@@ -273,27 +273,30 @@ export const constantRouterMap = [
     {
         path: '/swagger',
         component: Layout,
+        meta: { title: 'Swagger', icon: 'link' },
         children: [{
             path: process.env.BASE_API + '/swagger-ui.html',
-            meta: { title: 'Api test', icon: 'link' }
+            meta: { title: 'Swagger', icon: 'link' }
         }]
     },
 
     {
         path: '/Druid Monitor',
         component: Layout,
+        meta: { title: 'DruidMonitor', icon: 'link' },
         children: [{
             path: process.env.BASE_API + '/druid/index.html',
-            meta: { title: 'Druid Monitor', icon: 'link' }
+            meta: { title: 'DruidMonitor', icon: 'link' }
         }]
     },
 
     {
         path: '/external-link',
         component: Layout,
+        meta: { title: 'ExternalLink', icon: 'link' },
         children: [{
             path: 'http://175.178.116.88/group13/staff-portal-front-end',
-            meta: { title: 'External Link', icon: 'link' }
+            meta: { title: 'ExternalLink', icon: 'link' }
         }]
     },
 

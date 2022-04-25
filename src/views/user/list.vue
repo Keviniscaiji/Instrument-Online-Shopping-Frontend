@@ -33,8 +33,8 @@
             />
         </el-form-item>
 
-        <el-button type="primary" icon="el-icon-search" @click="getList()">Search</el-button>
-        <el-button type="default" @click="resetData()">Clear</el-button>
+        <el-button type="primary" icon="el-icon-search" @click="getList()"> {{ $t('button.Search') }}</el-button>
+        <el-button type="default" @click="resetData()"> {{ $t('button.Clear') }}</el-button>
         </el-form>
 
         <!-- 表格 -->
@@ -71,9 +71,9 @@
         <el-table-column label="Operation" width="200" align="center">
             <template slot-scope="scope">
             <router-link :to="'/user/edit/'+scope.row.id">
-                <el-button type="primary" size="mini" icon="el-icon-edit">Edit</el-button>
+                <el-button type="primary" size="mini" icon="el-icon-edit"> {{ $t('button.Edit') }}</el-button>
             </router-link>
-            <el-button type="danger" size="mini" icon="el-icon-delete" @click="removeDataById(scope.row.id)">Delete</el-button>
+            <el-button type="danger" size="mini" icon="el-icon-delete" @click="removeDataById(scope.row.id)"> {{ $t('button.Delete') }}</el-button>
             </template>
         </el-table-column>
         </el-table>

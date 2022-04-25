@@ -49,7 +49,7 @@
         </el-form-item>
 
         <el-form-item>
-            <el-button :disabled="saveBtnDisabled" type="primary" @click="saveOrUpdate">Save And Next</el-button>
+            <el-button :disabled="saveBtnDisabled" type="primary" @click="saveOrUpdate">{{ $t('button.SaveAndNext') }}</el-button>
         </el-form-item>
     </el-form>
   </div>

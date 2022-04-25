@@ -30,7 +30,7 @@
         :disabled="btnDisabled"
         type="primary"
         icon="el-icon-search"
-        @click="showChart()">Search</el-button>
+        @click="showChart()">{{ $t('button.Search') }}</el-button>
     </el-form>
 
     <div class="chart-container1">
@@ -49,7 +49,7 @@
         :disabled="btnDisabledPie"
         type="primary"
         icon="el-icon-search"
-        @click="showChartPie()">Search</el-button>
+        @click="showChartPie()">{{ $t('button.Search') }}</el-button>
     </el-form>
     <div class="chart-container2">
       <div id="chart2" class="chart" style="height:500px;width:100%" />
@@ -76,7 +76,7 @@
         :disabled="btnDisabledBar"
         type="primary"
         icon="el-icon-search"
-        @click="showChartBar()">Search</el-button>
+        @click="showChartBar()">{{ $t('button.Search') }}</el-button>
     </el-form>
 
     <div class="chart-container3">

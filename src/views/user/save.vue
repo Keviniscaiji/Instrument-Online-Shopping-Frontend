@@ -27,7 +27,7 @@
             <!-- 头衔缩略图 -->
             <pan-thumb :image="user.avatar"/>
             <!-- 文件上传按钮 -->
-            <el-button type="primary" icon="el-icon-upload" @click="imagecropperShow=true">changeAvatar
+            <el-button type="primary" icon="el-icon-upload" @click="imagecropperShow=true"> {{ $t('button.ChangeAvatar') }}
             </el-button>
             <!--
             v-show：是否显示上传组件
@@ -50,7 +50,7 @@
 
 
             <el-form-item>
-                <el-button :disabled="saveBtnDisabled" type="primary" @click="saveOrUpdate">Save</el-button>
+                <el-button :disabled="saveBtnDisabled" type="primary" @click="saveOrUpdate"> {{ $t('button.Save') }}</el-button>
             </el-form-item>
         </el-form>
     </div>
