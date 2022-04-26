@@ -1,35 +1,35 @@
 <template>
     <div class="app-container">
-        <h1>Order List</h1>
+        <h1>{{$t('text.OrderList')}}</h1>
         <!--查询表单-->
         <el-form :inline="true" class="demo-form-inline">
-        <el-form-item label="User Id">
-            <el-input v-model="orderQuery.userId" placeholder="userId"/>
+        <el-form-item :label="$t('text.UserId')">
+            <el-input v-model="orderQuery.userId" :placeholder="$t('text.UserId')"/>
         </el-form-item>
         <br/>
 
-        <el-form-item label="Method">
-            <el-select v-model="orderQuery.method" clearable placeholder="method">
-            <el-option :value="0" label="PickUp"/>
-            <el-option :value="1" label="Delivery"/>
+        <el-form-item :label="$t('text.Method')">
+            <el-select v-model="orderQuery.method" clearable :placeholder="$t('text.Method')">
+            <el-option :value="0" :label="$t('text.Method1')"/>
+            <el-option :value="1" :label="$t('text.Method2')"/>
             </el-select>
         </el-form-item>
         <br/>
 
-        <el-form-item label="Status">
-            <el-select v-model="orderQuery.status" clearable placeholder="status">
-                <el-option :value="0" label="Normal"/>
-                <el-option :value="1" label="Refound"/>
-                <el-option :value="2" label="Change"/>
+        <el-form-item :label="$t('text.Status')">
+            <el-select v-model="orderQuery.status" clearable :placeholder="$t('text.Status')">
+                <el-option :value="0" :label="$t('text.Status1')"/>
+                <el-option :value="1" :label="$t('text.Status2')"/>
+                <el-option :value="2" :label="$t('text.Status3')"/>
             </el-select>
         </el-form-item>
         <br/>
 
-        <el-form-item label="Created Time">
+        <el-form-item :label="$t('text.CreateTime')">
             <el-date-picker
             v-model="orderQuery.begin"
             type="datetime"
-            placeholder="choice startTime"
+            :placeholder="$t('text.ChooseStartTime')"
             value-format="yyyy-MM-dd HH:mm:ss"
             default-time="00:00:00"
             />
@@ -38,7 +38,7 @@
             <el-date-picker
             v-model="orderQuery.end"
             type="datetime"
-            placeholder="choice endTime"
+            :placeholder="$t('text.ChooseEndTime')"
             value-format="yyyy-MM-dd HH:mm:ss"
             default-time="00:00:00"
             />
@@ -56,36 +56,36 @@
         highlight-current-row>
 
         <el-table-column
-            label="Id"
+            :label="$t('text.Id')"
             width="70"
             align="center">
             <template slot-scope="scope">
             {{ (page - 1) * limit + scope.$index + 1 }}
             </template>
         </el-table-column>
-         <el-table-column prop="id" label="orderId" width="200" />
+         <el-table-column prop="id" :label="$t('text.OrderId')" width="200" />
 
-        <el-table-column prop="addressId" label="addressId" width="200" />
+        <el-table-column prop="addressId" :label="$t('text.AddressId')" width="200" />
 
-        <el-table-column prop="userId" label="userId" width="200" />
+        <el-table-column prop="userId" :label="$t('text.UserId')" width="200" />
 
-        <el-table-column label="method" width="80">
+        <el-table-column :label="$t('text.Method')" width="80">
             <template slot-scope="scope">
-            {{ scope.row.method===1?'PickUp':'Delivery' }}
+            {{ scope.row.method===1?$t('text.Method1'):$t('text.Method2') }}
             </template>
         </el-table-column>
-         <el-table-column label="status" width="80">
+         <el-table-column :label="$t('text.Status')" width="80">
             <template slot-scope="scope">    
-                <div v-if="scope.row.status === 0">Normal</div>
-                <div v-if="scope.row.status === 1">Refound</div>
-                <div v-if="scope.row.status === 2">Change</div>
+                <div v-if="scope.row.status === 0">{{$t('text.Status1')}}</div>
+                <div v-if="scope.row.status === 1">{{$t('text.Status2')}}</div>
+                <div v-if="scope.row.status === 2">{{$t('text.Status3')}}</div>
 
             </template>
         </el-table-column>
 
-        <el-table-column prop="gmtCreate" label="created Time" width="160"/>
+        <el-table-column prop="gmtCreate" :label="$t('text.CreateTime')" width="160"/>
 
-        <el-table-column label="Operation" align="center">
+        <el-table-column :label="$t('text.Operation')" align="center">
             <template slot-scope="scope">
             <router-link :to="'/order/edit/'+scope.row.id">
                 <el-button type="primary" size="mini" icon="el-icon-edit">{{ $t('button.ChangeAddress') }}</el-button>

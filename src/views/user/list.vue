@@ -1,24 +1,24 @@
 <template>
     <div class="app-container">
-        <h1>User List</h1>
+        <h1>{{ $t('text.UserList') }}</h1>
         <!--查询表单-->
         <el-form :inline="true" class="demo-form-inline">
         <el-form-item>
-            <el-input v-model="userQuery.username" placeholder="UserName"/>
+            <el-input v-model="userQuery.username" :placeholder="$t('text.UserName')"/>
         </el-form-item>
 
         <el-form-item>
-            <el-select v-model="userQuery.isActive" clearable placeholder="isActive">
-            <el-option :value="true" label="isActive"/>
-            <el-option :value="false" label="notActive"/>
+            <el-select v-model="userQuery.isActive" clearable :placeholder="$t('text.Active')">
+            <el-option :value="true" :label="$t('text.isActive')"/>
+            <el-option :value="false" :label="$t('text.notActive')"/>
             </el-select>
         </el-form-item>
 
-        <el-form-item label="Created Time">
+        <el-form-item :label="$t('text.CreateTime')">
             <el-date-picker
             v-model="userQuery.begin"
             type="datetime"
-            placeholder="choice startTime"
+            :placeholder="$t('text.ChooseStartTime')"
             value-format="yyyy-MM-dd HH:mm:ss"
             default-time="00:00:00"
             />
@@ -27,7 +27,7 @@
             <el-date-picker
             v-model="userQuery.end"
             type="datetime"
-            placeholder="choice endTime"
+            :placeholder="$t('text.ChooseEndTime')"
             value-format="yyyy-MM-dd HH:mm:ss"
             default-time="00:00:00"
             />
@@ -45,30 +45,30 @@
         highlight-current-row>
 
         <el-table-column
-            label="Id"
+            :label="$t('text.Id')"
             width="70"
             align="center">
             <template slot-scope="scope">
             {{ (page - 1) * limit + scope.$index + 1 }}
             </template>
         </el-table-column>
-         <el-table-column prop="id" label="userId" width="200" />
+         <el-table-column prop="id" :label="$t('text.UserId')" width="200" />
 
-        <el-table-column prop="username" label="name" width="80" />
+        <el-table-column prop="username" :label="$t('text.Name')" width="80" />
 
-        <el-table-column label="active" width="120">
+        <el-table-column :label="$t('text.Active')" width="120">
             <template slot-scope="scope">
-            {{ scope.row.isActive===true?'isActive':'notActive' }}
+            {{ scope.row.isActive===true?$t('text.isActive'):$t('text.notActive') }}
             </template>
         </el-table-column>
 
-        <el-table-column prop="email" label="email"  width="200"/>
-        <el-table-column prop="signature" label="signature" />
+        <el-table-column prop="email" :label="$t('text.Email')"  width="200"/>
+        <el-table-column prop="signature" :label="$t('text.Signature')" />
 
-        <el-table-column prop="gmtCreate" label="created Time" width="160"/>
+        <el-table-column prop="gmtCreate" :label="$t('text.CreateTime')" width="160"/>
 
 
-        <el-table-column label="Operation" width="200" align="center">
+        <el-table-column :label="$t('text.Operation')" width="200" align="center">
             <template slot-scope="scope">
             <router-link :to="'/user/edit/'+scope.row.id">
                 <el-button type="primary" size="mini" icon="el-icon-edit"> {{ $t('button.Edit') }}</el-button>

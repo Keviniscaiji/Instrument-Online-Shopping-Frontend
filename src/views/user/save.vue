@@ -1,29 +1,29 @@
 <template>
     <div class="app-container">
-        <h1>Add User</h1>
+        <h1>{{$t('text.AddUser')}}</h1>
         <el-form label-width="120px">
-            <el-form-item label="username">
+            <el-form-item :label="$t('text.UserName')">
                 <el-input v-model="user.username"/>
             </el-form-item>
-              <el-form-item label="email">
+              <el-form-item :label="$t('text.Email')">
                 <el-input v-model="user.email"/>
             </el-form-item>
-            <el-form-item label="avtive">
-                <el-select v-model="user.isActive" clearable placeholder="please choice">
-                    <el-option :value="false" label="notActive"/>
-                    <el-option :value="true" label="isActive"/>
+            <el-form-item :label="$t('text.Active')">
+                <el-select v-model="user.isActive" clearable :placeholder="$t('text.Status')">
+                    <el-option :value="false" :label="$t('text.notActive')"/>
+                    <el-option :value="true" :label="$t('text.isActive')"/>
                 </el-select>
             </el-form-item>
-            <el-form-item label="password">
+            <el-form-item :label="$t('text.Password')">
                 <el-input v-model="user.password" type="password"/>
              </el-form-item>
-            <el-form-item label="signature">
+            <el-form-item :label="$t('text.Signature')">
                 <el-input v-model="user.signature" :rows="10" type="textarea"/>
             </el-form-item>
 
             <!-- 讲师头像：TODO -->
             <!-- 讲师头像 -->
-        <el-form-item label="avatar">
+        <el-form-item :label="$t('text.Avatar')">
             <!-- 头衔缩略图 -->
             <pan-thumb :image="user.avatar"/>
             <!-- 文件上传按钮 -->

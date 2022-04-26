@@ -2,12 +2,12 @@
 
   <div class="app-container">
 
-    <h2 style="text-align: center;">Add Commodity</h2>
+    <h2 style="text-align: center;">{{$t('text.AddCommodity')}}</h2>
 
     <el-steps :active="3" process-status="wait" align-center style="margin-bottom: 40px;">
-      <el-step title="Basic Info"/>
-      <el-step title="Introduction"/>
-      <el-step title="Final Publish"/>
+       <el-step :title="$t('text.BasicInfo')"/>
+      <el-step :title="$t('text.Introduction')"/>
+      <el-step :title="$t('text.FinalPublish')"/>
     </el-steps>
 
     <div class="ccInfo">

@@ -1,52 +1,50 @@
 <template>
+  <div>
+  <div class="avatar-container">
+    <template>
+      <lang-select class="langIcon" />
+    </template>
+  </div>
   <div class="login-container">
+     
     <el-form ref="loginForm" :model="loginForm"  class="login-form" auto-complete="on" label-position="left">
-      <h3 class="title">Group13 Staff System</h3>
+      <h3 class="title">{{$t("role.intro")}}</h3>
+    
       <el-form-item prop="username">
         <span class="svg-container">
           <svg-icon icon-class="user" />
         </span>
-        <el-input v-model="loginForm.username" name="username" type="text" auto-complete="on" placeholder="username" />
+        <el-input v-model="loginForm.username" name="username" type="text" auto-complete="on" placeholder="" />
       </el-form-item>
-      <el-form-item prop="password">
-        <span class="svg-container">
-          <svg-icon icon-class="password" />
-        </span>
-        <el-input
-          :type="pwdType"
-          v-model="loginForm.password"
-          name="password"
-          auto-complete="on"
-          placeholder="password"
-          @keyup.enter.native="handleLogin" />
-        <span class="show-pwd" @click="showPwd">
-          <svg-icon icon-class="eye" />
-        </span>
-      </el-form-item>
-      <el-form-item>
         <el-button :loading="loading" type="primary" style="width:100%;" @click.native.prevent="handleLogin">
-          Sign in
+          {{$t("role.login")}}
         </el-button>
-      </el-form-item>
       <div class="tips">
-        <span style="margin-right:20px;">username: admin</span>
-        <span> password: admin</span>
+        <span style="margin-right:20px;">{{$t("role.tip1")}}</span>
+        <!-- <span> password: admin</span> -->
       </div >
          <el-button :loading="loading" type="primary" style="width:100%;" @click.native.prevent="vxLogin">
-          Vx Login
+          {{$t("role.wxlogin")}}
         </el-button>
+        <div class="tips">
+        <span style="margin-right:20px;">{{$t("role.tip2")}}</span>
+        <!-- <span> password: admin</span> -->
+      </div >
         <!-- <a id="weixin" class="weixin" target="_blank" href="http://localhost:8160/api/ucenter/wx/login" >VX Login</a> -->
           <!-- <li><a id="qq" class="qq" target="_blank" href="#"><i class="iconfont icon-qq"/></a></li> -->
     </el-form>
+  </div>
   </div>
 </template>
 
 <script>
 // import { isvalidUsername } from '@/utils/validate'
 import {loginByUserName} from '@/api/login'
+import LangSelect from '@/components/LangSelect'
 
 export default {
   name: 'Login',
+  components: {LangSelect},
   data() {
     // const validateUsername = (rule, value, callback) => {
     //   if (!isvalidUsername(value)) {
@@ -64,7 +62,7 @@ export default {
     // }
     return {
       loginForm: {
-        username: 'admin',
+        username: '',
         password: 'admin'
       },
       // loginRules: {
@@ -203,6 +201,18 @@ $light_gray:#eee;
 
 
 <style rel="stylesheet/scss" lang="scss">
+.avatar-container {
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    z-index: 1;
+  }
+  .langIcon{
+    width: 100%;
+    height: 100%;
+  }
 
 $bg:#2d3a4b;
 $light_gray:#eee;
@@ -233,6 +243,7 @@ $light_gray:#eee;
     border-radius: 5px;
     color: #454545;
   }
+  
 }
 
 </style>

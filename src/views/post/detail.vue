@@ -2,12 +2,12 @@
 
   <div class="app-container">
 
-    <h2 style="text-align: center;">Post Comment Detail</h2>
+    <h2 style="text-align: center;">{{$t('text.PostCommentInfo')}}</h2>
 
 
     <el-form label-width="120px">
         <!-- 课程简介 TODO -->
-        <el-form-item label="Introduction">
+        <el-form-item :label="$t('text.Introduction')">
             <tinymce :height="300" v-model="detail.content"/>
         </el-form-item>
     </el-form>

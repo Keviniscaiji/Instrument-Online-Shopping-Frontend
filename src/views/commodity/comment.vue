@@ -1,6 +1,6 @@
 <template>
     <div class="app-container">
-        <h1>Commodity Comment List</h1>
+        <h1>{{$t('text.CommodityCommentList')}}</h1>
 
         <!-- 表格 -->
         <el-table
@@ -10,7 +10,7 @@
         highlight-current-row>
 
         <el-table-column
-            label="Id"
+            :label="$t('text.Id')"
             width="70"
             align="center">
             <template slot-scope="scope">
@@ -18,15 +18,15 @@
             </template>
         </el-table-column>
 
-        <el-table-column prop="commodityId" label="commodityId"  width="200"/>
+        <el-table-column prop="commodityId" :label="$t('text.CommodityId')"  width="200"/>
 
-        <el-table-column prop="userId" label="userId"  width="200"/>
+        <el-table-column prop="userId" :label="$t('text.UserId')"  width="200"/>
 
-        <el-table-column prop="likeAmount" label="likeAmount"  width="120"/>
+        <el-table-column prop="likeAmount" :label="$t('text.LikeAmount')"  width="120"/>
       
-        <el-table-column prop="gmtCreate" label="created Time" width="160"/>
+        <el-table-column prop="gmtCreate" :label="$t('text.CreateTime')" width="160"/>
 
-        <el-table-column label="Operation" align="center">
+        <el-table-column :label="$t('text.Operation')" align="center">
             <template slot-scope="scope">
             <router-link :to="'/commodity/detail/'+scope.row.id">
                 <el-button type="primary" size="mini" icon="el-icon-edit">{{ $t('button.Detail') }}</el-button>

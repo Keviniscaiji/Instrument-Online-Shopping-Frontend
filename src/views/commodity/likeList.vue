@@ -1,6 +1,6 @@
 <template>
     <div class="app-container">
-        <h1>Comment Like List</h1>
+        <h1>{{$t('text.CommentLikeList')}}</h1>
 
         <!-- 表格 -->
         <el-table
@@ -10,7 +10,7 @@
         highlight-current-row>
 
         <el-table-column
-            label="Id"
+            :label="$t('text.Id')"
             width="70"
             align="center">
             <template slot-scope="scope">
@@ -19,13 +19,13 @@
         </el-table-column>
 
        
-        <el-table-column prop="userId" label="userId"  width="200"/>
+        <el-table-column prop="userId" :label="$t('text.UserId')"  width="200"/>
 
-         <el-table-column prop="commentId" label="commentId"  width="200"/>
+         <el-table-column prop="commentId" :label="$t('text.CommentId')"  width="200"/>
       
-        <el-table-column prop="gmtCreate" label="created Time" width="160"/>
+        <el-table-column prop="gmtCreate" :label="$t('text.CreateTime')" width="160"/>
 
-        <el-table-column label="Operation" align="center">
+        <el-table-column :label="$t('text.Operation')" align="center">
             <template slot-scope="scope">
             <el-button type="danger" size="mini" icon="el-icon-delete" @click="removeDataById(scope.row.id)">{{ $t('button.Delete') }}</el-button>
             </template>

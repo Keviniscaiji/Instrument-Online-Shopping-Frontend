@@ -1,42 +1,42 @@
 <template>
     <div class="app-container">
-        <h1>Commodity List</h1>
+        <h1>{{$t('text.CommodityList')}}</h1>
         <!--查询表单-->
         <el-form :inline="true" class="demo-form-inline">
-        <el-form-item label="Name">
-            <el-input v-model="commodityQuery.name" placeholder="UserName"/>
+        <el-form-item :label="$t('text.Name')">
+            <el-input v-model="commodityQuery.name" :placeholder="$t('text.Name')"/>
         </el-form-item>
 
         <br/>
 
-        <el-form-item label="Price"> 
-            <el-input v-model="commodityQuery.minPrice" placeholder="minPrice"/>
+        <el-form-item :label="$t('text.Price')"> 
+            <el-input v-model="commodityQuery.minPrice" :placeholder="$t('text.MinPrice')"/>
         </el-form-item>
          <el-form-item>
-            <el-input v-model="commodityQuery.maxPrice" placeholder="maxPrice"/>
+            <el-input v-model="commodityQuery.maxPrice" :placeholder="$t('text.MaxPrice')"/>
         </el-form-item>
 
         <br/>
-        <el-form-item label="Sort">
-            <el-select v-model="commodityQuery.sortBy" clearable placeholder="sortedBy">
-            <el-option :value="1" label="buyAmount"/>
-            <el-option :value="2" label="collectAmount"/>
-            <el-option :value="3" label="visitAmount"/>
+        <el-form-item :label="$t('text.Sort')">
+            <el-select v-model="commodityQuery.sortBy" clearable :placeholder="$t('text.SortedBy')">
+            <el-option :value="1" :label="$t('text.Buy')"/>
+            <el-option :value="2" :label="$t('text.Collect')"/>
+            <el-option :value="3" :label="$t('text.Visit')"/>
             </el-select>
         </el-form-item>
         <el-form-item>
-            <el-select v-model="commodityQuery.sortAsc" clearable placeholder="isAsc">
-            <el-option :value="true" label="Asc"/>
-            <el-option :value="false" label="Desc"/>
+            <el-select v-model="commodityQuery.sortAsc" clearable :placeholder="$t('text.isAsc')">
+            <el-option :value="true" :label="$t('text.Asc')"/>
+            <el-option :value="false" :label="$t('text.Desc')"/>
             </el-select>
         </el-form-item>
 
         <br/>
-        <el-form-item label="Created Time">
+        <el-form-item :label="$t('text.CreateTime')">
             <el-date-picker
             v-model="commodityQuery.begin"
             type="datetime"
-            placeholder="choice startTime"
+            :placeholder="$t('text.ChooseStartTime')"
             value-format="yyyy-MM-dd HH:mm:ss"
             default-time="00:00:00"
             />
@@ -45,7 +45,7 @@
             <el-date-picker
             v-model="commodityQuery.end"
             type="datetime"
-            placeholder="choice endTime"
+            :placeholder="$t('text.ChooseEndTime')"
             value-format="yyyy-MM-dd HH:mm:ss"
             default-time="00:00:00"
             />
@@ -63,7 +63,7 @@
         highlight-current-row>
 
         <el-table-column
-            label="Id"
+            :label="$t('text.Id')"
             width="70"
             align="center">
             <template slot-scope="scope">
@@ -71,32 +71,32 @@
             </template>
         </el-table-column>
 
-        <el-table-column prop="id" label="commodityId" width="200" />
-        <el-table-column prop="name" label="name" width="80" />
+        <el-table-column prop="id" :label="$t('text.CommodityId')" width="200" />
+        <el-table-column prop="name" :label="$t('text.Name')" width="80" />
 
-        <el-table-column label="type" width="90">
+        <el-table-column :label="$t('text.Type')" width="90">
             <template slot-scope="scope">    
-                <div v-if="scope.row.type === 0">Pipes</div>
-                <div v-if="scope.row.type === 1">Electronic</div>
-                <div v-if="scope.row.type === 2">Precussion</div>
-                <div v-if="scope.row.type === 3">Piano</div>
-                <div v-if="scope.row.type === 4">Guitar</div>
-                <div v-if="scope.row.type === 5">Others</div>
+                <div v-if="scope.row.type === 0">{{$t('text.Type1')}}</div>
+                <div v-if="scope.row.type === 1">{{$t('text.Type2')}}</div>
+                <div v-if="scope.row.type === 2">{{$t('text.Type3')}}</div>
+                <div v-if="scope.row.type === 3">{{$t('text.Type4')}}</div>
+                <div v-if="scope.row.type === 4">{{$t('text.Type5')}}</div>
+                <div v-if="scope.row.type === 5">{{$t('text.Type6')}}</div>
             </template>
         </el-table-column>
 
-        <el-table-column prop="price" label="price" width="60"/>
+        <el-table-column prop="price" :label="$t('text.Price')" width="60"/>
 
-        <el-table-column prop="amount" label="amount" width="75"/>
+        <el-table-column prop="amount" :label="$t('text.Amount')" width="75"/>
 
-        <el-table-column prop="buyAmount" label="buy" width="60"/>
-        <el-table-column prop="collectAmount" label="collect" width="70"/>
-        <el-table-column prop="visitAmount" label="visit" width="60"/>
-        <el-table-column prop="likeAmount" label="like" width="60"/>
+        <el-table-column prop="buyAmount" :label="$t('text.Buy')" width="70"/>
+        <el-table-column prop="collectAmount" :label="$t('text.Collect')" width="70"/>
+        <el-table-column prop="visitAmount" :label="$t('text.Visit')" width="70"/>
+        <el-table-column prop="likeAmount" :label="$t('text.Like')" width="70"/>
 
-        <el-table-column prop="gmtCreate" label="created Time" width="160"/>
+        <el-table-column prop="gmtCreate" :label="$t('text.CreateTime')" width="160"/>
 
-        <el-table-column label="Operation" align="center">
+        <el-table-column :label="$t('text.Operation')" align="center">
             <template slot-scope="scope">
             <router-link :to="'/commodity/basic/'+scope.row.id">
                 <el-button type="primary" size="mini" icon="el-icon-edit"> {{ $t('button.EditBasic') }}</el-button>

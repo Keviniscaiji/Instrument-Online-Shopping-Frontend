@@ -2,36 +2,36 @@
 
   <div class="app-container">
 
-    <h2 style="text-align: center;">Add Commodity</h2>
+    <h2 style="text-align: center;">{{$t('text.AddCommodity')}}</h2>
 
     <el-steps :active="1" process-status="wait" align-center style="margin-bottom: 40px;">
-      <el-step title="Basic Info"/>
-      <el-step title="Introduction"/>
-      <el-step title="Final Publish"/>
+      <el-step :title="$t('text.BasicInfo')"/>
+      <el-step :title="$t('text.Introduction')"/>
+      <el-step :title="$t('text.FinalPublish')"/>
     </el-steps>
 
     <el-form label-width="120px">
 
-        <el-form-item label="name">
+        <el-form-item :label="$t('text.Name')">
             <el-input v-model="commodityBasicInfoDto.name" placeholder=" eg: Yamaha spruce guitar"/>
         </el-form-item>
 
 
 
-          <el-form-item label="Type">
-            <el-select v-model="commodityBasicInfoDto.type" clearable placeholder="type">
-            <el-option :value="0" label="Pipes"/>
-            <el-option :value="1" label="Electronic"/>
-            <el-option :value="2" label="Percussion"/>
-            <el-option :value="3" label="Piano"/>
-            <el-option :value="4" label="Guitar"/>
-            <el-option :value="5" label="Others"/>
+          <el-form-item :label="$t('text.Type')">
+            <el-select v-model="commodityBasicInfoDto.type" clearable :placeholder="$t('text.Type')">
+            <el-option :value="0" :label="$t('text.Type1')"/>
+            <el-option :value="1" :label="$t('text.Type2')"/>
+            <el-option :value="2" :label="$t('text.Type3')"/>
+            <el-option :value="3" :label="$t('text.Type4')"/>
+            <el-option :value="4" :label="$t('text.Type5')"/>
+            <el-option :value="5" :label="$t('text.Type6')"/>
             </el-select>
         </el-form-item>
 
 
         <!-- 课程封面-->
-        <el-form-item label="Cover">
+        <el-form-item :label="$t('text.Cover')">
 
             <el-upload
                 :show-file-list="false"
@@ -44,8 +44,8 @@
 
         </el-form-item>
 
-        <el-form-item label="price">
-            <el-input-number :min="0" v-model="commodityBasicInfoDto.price" controls-position="right" placeholder="price"/> $
+        <el-form-item :label="$t('text.Price')">
+            <el-input-number :min="0" v-model="commodityBasicInfoDto.price" controls-position="right" :placeholder="$t('text.Price')"/> $
         </el-form-item>
 
         <el-form-item>

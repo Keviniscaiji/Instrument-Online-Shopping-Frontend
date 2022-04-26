@@ -3,11 +3,11 @@
     <!--表单-->
     <el-form :inline="true" class="demo-form-inline">
 
-      <el-form-item label="Time">
+      <el-form-item :label="$t('text.Time')">
         <el-date-picker
           v-model="day"
           type="date"
-          placeholder="Select the date to be counted"
+          :placeholder="$t('text.Date')"
           value-format="yyyy-MM-dd" />
       </el-form-item>
 

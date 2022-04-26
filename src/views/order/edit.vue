@@ -1,14 +1,14 @@
 <template>
     <div class="app-container">
-        <h1>Edit Address</h1>
+        <h1>{{$t('text.EditAddress')}}</h1>
         <el-form label-width="120px">
-            <el-form-item label="username">
+            <el-form-item :label="$t('text.UserName')">
                 <el-input v-model="address.userId" readonly=""/>
             </el-form-item>
-              <el-form-item label="address1">
+              <el-form-item :label="$t('text.Address1')">
                 <el-input v-model="address.address1"/>
             </el-form-item>
-            <el-form-item label="address2">
+            <el-form-item :label="$t('text.Address2')">
                 <el-input v-model="address.address2"/>
              </el-form-item>
             <el-form-item>

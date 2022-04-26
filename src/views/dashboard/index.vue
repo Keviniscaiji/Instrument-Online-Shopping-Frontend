@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard-container">
-    <div class="dashboard-text">name: {{ pugeUser.nickname }}</div>
+    <div class="dashboard-text">{{$t('text.UserName')}}: {{ pugeUser.nickname }}</div>
 
   </div>
 </template>

@@ -2,14 +2,14 @@
 
   <div class="app-container">
 
-    <h2 style="text-align: center;">Post Info</h2>
+    <h2 style="text-align: center;">{{$t('text.PostInfo')}}</h2>
 
     <el-form label-width="120px">
-        <el-form-item label="title"> 
-            <el-input v-model="postInfo.title" placeholder="title"/>
+        <el-form-item :label="$t('text.Title')"> 
+            <el-input v-model="postInfo.title" :placeholder="$t('text.Title')"/>
         </el-form-item>
         <!-- 课程简介 TODO -->
-        <el-form-item label="Introduction">
+        <el-form-item :label="$t('text.Introduction')">
             <tinymce :height="300" v-model="postInfo.content"/>
         </el-form-item>
     </el-form>

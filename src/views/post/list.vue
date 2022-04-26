@@ -1,28 +1,28 @@
 <template>
     <div class="app-container">
-        <h1>Post List</h1>
+        <h1>{{$t('text.PostList')}}</h1>
         <!--查询表单-->
         <el-form :inline="true" class="demo-form-inline">
-        <el-form-item label="Title">
-            <el-input v-model="postQueryVo.title" placeholder="title"/>
+        <el-form-item :label="$t('text.Title')">
+            <el-input v-model="postQueryVo.title" :placeholder="$t('text.Title')"/>
         </el-form-item>
 
         <br/>
 
-        <el-form-item label="userId"> 
-            <el-input v-model="postQueryVo.userId" placeholder="userId"/>
+        <el-form-item :label="$t('text.UserId')"> 
+            <el-input v-model="postQueryVo.userId" :placeholder="$t('text.UserId')"/>
         </el-form-item>
          <el-form-item label="commodityId">
-            <el-input v-model="postQueryVo.commodityId" placeholder="commodityId"/>
+            <el-input v-model="postQueryVo.commodityId" :placeholder="$t('text.CommodityId')"/>
         </el-form-item>
 
 
         <br/>
-        <el-form-item label="Created Time">
+        <el-form-item :label="$t('text.CreateTime')">
             <el-date-picker
             v-model="postQueryVo.begin"
             type="datetime"
-            placeholder="choice startTime"
+            :placeholder="$t('text.ChooseStartTime')"
             value-format="yyyy-MM-dd HH:mm:ss"
             default-time="00:00:00"
             />
@@ -31,7 +31,7 @@
             <el-date-picker
             v-model="postQueryVo.end"
             type="datetime"
-            placeholder="choice endTime"
+            :placeholder="$t('text.ChooseEndTime')"
             value-format="yyyy-MM-dd HH:mm:ss"
             default-time="00:00:00"
             />
@@ -49,7 +49,7 @@
         highlight-current-row>
 
         <el-table-column
-            label="Id"
+            :label="$t('text.Id')"
             width="70"
             align="center">
             <template slot-scope="scope">
@@ -57,18 +57,18 @@
             </template>
         </el-table-column>
 
-        <el-table-column prop="id" label="postId" width="200" />
-        <el-table-column prop="title" label="title" width="80" />
+        <el-table-column prop="id" :label="$t('text.PostId')" width="200" />
+        <el-table-column prop="title" :label="$t('text.Title')" width="80" />
 
 
-        <el-table-column prop="commodityId" label="commodityId"  width="200"/>
+        <el-table-column prop="commodityId" :label="$t('text.CommodityId')"  width="200"/>
 
-        <el-table-column prop="userId" label="userId"  width="200"/>
+        <el-table-column prop="userId" :label="$t('text.UserId')"  width="200"/>
 
 
-        <el-table-column prop="gmtCreate" label="created Time" width="160"/>
+        <el-table-column prop="gmtCreate" :label="$t('text.CreateTime')" width="160"/>
 
-        <el-table-column label="Operation" align="center">
+        <el-table-column :label="$t('text.Operation')" align="center">
             <template slot-scope="scope">
             <router-link :to="'/post/info/'+scope.row.id">
                 <el-button type="primary" size="mini" icon="el-icon-edit">{{ $t('button.Info') }}</el-button>

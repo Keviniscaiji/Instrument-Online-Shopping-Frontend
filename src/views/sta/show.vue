@@ -4,11 +4,11 @@
     <el-form :inline="true" class="demo-form-inline">
 
       <el-form-item>
-        <el-select v-model="searchObj.type" clearable placeholder="select">
-          <el-option label="Register Num" value="register_num"/>
-          <el-option label="Commodity Visit Num" value="commodity_visit_num"/>
-          <el-option label="Commodity Buy Num" value="commodity_buy_num"/>
-          <el-option label="Post Num" value="post_num"/>
+        <el-select v-model="searchObj.type" clearable :placeholder="$t('text.Type')">
+          <el-option :label="$t('text.RegisterNum')" value="register_num"/>
+          <el-option :label="$t('text.CommodityVisitNum')" value="commodity_visit_num"/>
+          <el-option :label="$t('text.CommodityBuyNum')" value="commodity_buy_num"/>
+          <el-option :label="$t('text.PostNum')" value="post_num"/>
         </el-select>
       </el-form-item>
 
@@ -16,14 +16,14 @@
         <el-date-picker
           v-model="searchObj.begin"
           type="date"
-          placeholder="start Date"
+          :placeholder="$t('text.StartDate')"
           value-format="yyyy-MM-dd" />
       </el-form-item>
       <el-form-item>
         <el-date-picker
           v-model="searchObj.end"
           type="date"
-          placeholder="end Date"
+          :placeholder="$t('text.EndDate')"
           value-format="yyyy-MM-dd" />
       </el-form-item>
       <el-button
@@ -42,7 +42,7 @@
         <el-date-picker
           v-model="searchObjPie.day"
           type="date"
-          placeholder="Date"
+          :placeholder="$t('text.Date')"
           value-format="yyyy-MM-dd" />
       </el-form-item>
       <el-button
@@ -62,14 +62,14 @@
         <el-date-picker
           v-model="searchObjBar.begin"
           type="date"
-          placeholder="start Date"
+          :placeholder="$t('text.StartDate')"
           value-format="yyyy-MM-dd" />
       </el-form-item>
       <el-form-item>
         <el-date-picker
           v-model="searchObjBar.end"
           type="date"
-          placeholder="end Date"
+          :placeholder="$t('text.EndDate')"
           value-format="yyyy-MM-dd" />
       </el-form-item>
       <el-button
@@ -87,6 +87,7 @@
 <script>
 import echarts from 'echarts'
 import staApi from '@/api/sta'
+import i18n from '@/lang'
 
 export default {
     data() {
@@ -157,10 +158,10 @@ export default {
             // 指定图表的配置项和数据
             var option = {
                 title: {
-                    text: 'Visited Daily statistics'
+                    text: i18n.t('text.Chart3')
                 },
                 legend: {
-                    data: ["Pipes", "Electronic", "Percussion", "Piano", "Guitar", "Others"]
+                    data: [i18n.t('text.Type1'), i18n.t('text.Type2'), i18n.t('text.Type3'), i18n.t('text.Type4'), i18n.t('text.Type5'), i18n.t('text.Type6')]
                 },
                
                 // x轴是类目轴（离散数据）,必须通过data设置类目数据
@@ -177,42 +178,42 @@ export default {
                     {
                         // 系列中的数据内容数组
                         data: this.barY1Data,
-                        name: "Pipes",
+                        name: i18n.t('text.Type1'),
                         // 折线图
                         type: 'bar'
                     },
                     {
                         // 系列中的数据内容数组
                         data: this.barY2Data,
-                        name: "Electronic",
+                        name: i18n.t('text.Type2'),
                         // 折线图
                         type: 'bar'
                     },
                     {
                         // 系列中的数据内容数组
                         data: this.barY3Data,
-                        name: "Percussion",
+                        name: i18n.t('text.Type3'),
                         // 折线图
                         type: 'bar'
                     },
                     {
                         // 系列中的数据内容数组
                         data: this.barY4Data,
-                        name: "Piano",
+                        name: i18n.t('text.Type4'),
                         // 折线图
                         type: 'bar'
                     },
                     {
                         // 系列中的数据内容数组
                         data: this.barY5Data,
-                        name: "Guitar",
+                        name: i18n.t('text.Type5'),
                         // 折线图
                         type: 'bar'
                     },
                     {
                         // 系列中的数据内容数组
                         data: this.barY6Data,
-                        name: "Others",
+                        name: i18n.t('text.Type6'),
                         // 折线图
                         type: 'bar'
                     },
@@ -227,7 +228,7 @@ export default {
             console.log(this.dataPie)
             var option = {
                 title: {
-                    text: 'Cart statistics',
+                    text: i18n.t('text.Chart2'),
                     x: 'center'
                 },
                 tooltip: {
@@ -269,7 +270,7 @@ export default {
             // 指定图表的配置项和数据
             var option = {
                 title: {
-                    text: 'Data statistics'
+                    text: i18n.t('text.Chart1')
                 },
                 tooltip: {
                     trigger: 'axis'
