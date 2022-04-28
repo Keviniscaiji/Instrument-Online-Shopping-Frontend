@@ -6,13 +6,11 @@
         <el-form-item :label="$t('text.Title')">
             <el-input v-model="postQueryVo.title" :placeholder="$t('text.Title')"/>
         </el-form-item>
-
         <br/>
-
         <el-form-item :label="$t('text.UserId')"> 
             <el-input v-model="postQueryVo.userId" :placeholder="$t('text.UserId')"/>
         </el-form-item>
-         <el-form-item label="commodityId">
+         <el-form-item :label="$t('text.CommodityId')">
             <el-input v-model="postQueryVo.commodityId" :placeholder="$t('text.CommodityId')"/>
         </el-form-item>
 

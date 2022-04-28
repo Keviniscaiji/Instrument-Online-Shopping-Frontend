@@ -23,7 +23,6 @@ export default {
         CreateData: "Create Data",
         Charts: "Charts",
         Chat: "Chat"
-
     },
     role: {
       permission: 'Permission',
@@ -61,7 +60,9 @@ export default {
         Clear: 'Clear',
         Back: "Back",
         Send: "Send",
-        Detail: "Detail"
+        Detail: "Detail",
+        Refund: "Refund",
+        Next: "Next"
     },
     text: {
       UserList: "User List",
@@ -136,8 +137,9 @@ export default {
       OrderId: "OrderId",
       AddressId: "AddressId",
       Status1: "Normal",
-      Status2: "Refund",
-      Status3: "Change",
+      Status2: "Refunding",
+      Status3: "Changing",
+      Status4: "Redunded",
       RegisterNum: "Register Num",
       CommodityVisitNum: "Commodity Visit Num",
       CommodityBuyNum: "Commodity Buy Num",
@@ -145,5 +147,12 @@ export default {
       Chart1: "Data statistics",
       Chart2: "Cart statistics",
       Chart3: "Visited Daily statistics",
+      FStatus1: "Ordered",
+      FStatus2: "Delivering",
+      FStatus3: "Reached",
+      FStatus4: "Signed",
+      FStatus5: "Refunded",
+      FStatus6: "PickUp",
+      FStatus: "FlowStatus"
     }
 }

@@ -60,7 +60,9 @@ export default {
         Clear: "清空",
         Back: "返回",
         Send: "发送",
-        Detail: "详情"
+        Detail: "详情",
+        Refund: "退款",
+        Next: "下一步"
     },
     text: {
       UserList: "用户列表",
@@ -135,8 +137,9 @@ export default {
       OrderId: "订单编号",
       AddressId: "地址编号",
       Status1: "正常",
-      Status2: "退款",
-      Status3: "修改",
+      Status2: "退款中",
+      Status3: "修改中",
+      Status4: "已退款",
       RegisterNum: "注册总人数",
       CommodityVisitNum: "商品总浏览量",
       CommodityBuyNum: "商品总购买量",
@@ -144,6 +147,13 @@ export default {
       Chart1: "关键数据总量分析",
       Chart2: "购物车数据分析",
       Chart3: "每日变动信息分析",
+      FStatus1: "已下单",
+      FStatus2: "配送中",
+      FStatus3: "已送达",
+      FStatus4: "已签收",
+      FStatus5: "已退款",
+      FStatus6: "自取",
+      FStatus: "物流状态"
     }
   }
   

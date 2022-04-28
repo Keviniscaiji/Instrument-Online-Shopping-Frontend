@@ -13,7 +13,7 @@ export default{
     deleteOrderById(id){
         return request({
             url: `/order/deleteOrder/${id}`,
-            method: 'delete'
+            method: 'post'
         })
     },
     // 3 select Address By id
@@ -31,13 +31,12 @@ export default{
             data: address
         })
     },
-    // // 5 修改user
-    // updateUser(user){
-    //     return request({
-    //         url: `/user/updateUser`,
-    //         method: 'put',
-    //         data: user
-    //     })
-    // }
+    // 5 next step
+    nextStep(id){
+        return request({
+            url: `/order/nextStep/${id}`,
+            method: 'post',
+        })
+    }
 
 }

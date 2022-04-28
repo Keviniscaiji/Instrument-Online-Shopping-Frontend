@@ -10,8 +10,8 @@
 
         <el-form-item :label="$t('text.Method')">
             <el-select v-model="orderQuery.method" clearable :placeholder="$t('text.Method')">
-            <el-option :value="0" :label="$t('text.Method1')"/>
-            <el-option :value="1" :label="$t('text.Method2')"/>
+            <el-option :value="1" :label="$t('text.Method1')"/>
+            <el-option :value="0" :label="$t('text.Method2')"/>
             </el-select>
         </el-form-item>
         <br/>
@@ -21,6 +21,19 @@
                 <el-option :value="0" :label="$t('text.Status1')"/>
                 <el-option :value="1" :label="$t('text.Status2')"/>
                 <el-option :value="2" :label="$t('text.Status3')"/>
+                <el-option :value="3" :label="$t('text.Status4')"/>
+            </el-select>
+        </el-form-item>
+        <br/>
+
+        <el-form-item :label="$t('text.FStatus')">
+            <el-select v-model="orderQuery.flowstatus" clearable :placeholder="$t('text.FStatus')">
+                <el-option :value="0" :label="$t('text.FStatus1')"/>
+                <el-option :value="1" :label="$t('text.FStatus2')"/>
+                <el-option :value="2" :label="$t('text.FStatus3')"/>
+                <el-option :value="3" :label="$t('text.FStatus4')"/>
+                <el-option :value="4" :label="$t('text.FStatus5')"/>
+                <el-option :value="5" :label="$t('text.FStatus6')"/>
             </el-select>
         </el-form-item>
         <br/>
@@ -79,7 +92,17 @@
                 <div v-if="scope.row.status === 0">{{$t('text.Status1')}}</div>
                 <div v-if="scope.row.status === 1">{{$t('text.Status2')}}</div>
                 <div v-if="scope.row.status === 2">{{$t('text.Status3')}}</div>
-
+                <div v-if="scope.row.status === 3">{{$t('text.Status4')}}</div>
+            </template>
+        </el-table-column>
+        <el-table-column :label="$t('text.FStatus')" width="80">
+            <template slot-scope="scope">    
+                <div v-if="scope.row.flowstatus === 0">{{$t('text.FStatus1')}}</div>
+                <div v-if="scope.row.flowstatus === 1">{{$t('text.FStatus2')}}</div>
+                <div v-if="scope.row.flowstatus === 2">{{$t('text.FStatus3')}}</div>
+                <div v-if="scope.row.flowstatus === 3">{{$t('text.FStatus4')}}</div>
+                <div v-if="scope.row.flowstatus === 4">{{$t('text.FStatus5')}}</div>
+                <div v-if="scope.row.flowstatus === 5">{{$t('text.FStatus6')}}</div>
             </template>
         </el-table-column>
 
@@ -87,10 +110,11 @@
 
         <el-table-column :label="$t('text.Operation')" align="center">
             <template slot-scope="scope">
-            <router-link :to="'/order/edit/'+scope.row.id">
+            <router-link v-if="scope.row.status === 2" :to="'/order/edit/'+scope.row.id">
                 <el-button type="primary" size="mini" icon="el-icon-edit">{{ $t('button.ChangeAddress') }}</el-button>
             </router-link>
-            <el-button type="danger" size="mini" icon="el-icon-delete" @click="removeDataById(scope.row.id)">{{ $t('button.Delete') }}</el-button>
+            <el-button v-if="scope.row.status === 1" type="danger" size="mini" icon="el-icon-delete" @click="removeDataById(scope.row.id)">{{ $t('button.Refund') }}</el-button>
+            <el-button v-if="scope.row.status === 0 && scope.row.flowstatus <= 1" type="success" size="mini" icon="el-icon-delete" @click="next(scope.row.id)">{{ $t('button.Next') }}</el-button>
             </template>
         </el-table-column>
         </el-table>
@@ -125,7 +149,13 @@ export default{
         // 调用
         this.getList()
     },
-    methods: { // 创建具体的方法，调用teacher.js的方法
+    methods: { 
+        next(id){
+            order.nextStep(id)
+                .then(response => {
+                    this.getList()
+                })
+        },
         getList(page = 1){
             this.page = page
             // console.log(this.page)

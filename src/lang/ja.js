@@ -60,7 +60,9 @@ export default {
         Clear: "クリア",
         Back: "背中",
         Send: "送信",
-        Detail: "ディテール"
+        Detail: "ディテール",
+        Refund: "払い戻し",
+        Next: "次のページ"
     },
     text: {
       UserList: "ユーザーのリスト",
@@ -135,8 +137,9 @@ export default {
       OrderId: "注文番号",
       AddressId: "アドレス番号",
       Status1: "通常",
-      Status2: "払い戻しについて",
-      Status3: "修正内容",
+      Status2: "返金処理中",
+      Status3: "修正中",
+      Status4: "払い戻し",
       RegisterNum: "登録者総数",
       CommodityVisitNum: "プロダクトビューの総数",
       CommodityBuyNum: "商品仕入高計",
@@ -144,6 +147,13 @@ export default {
       Chart1: "主要データ集計の分析",
       Chart2: "ショッピングカートのデータ分析",
       Chart3: "日々の動きに関する情報の分析",
+      FStatus1: "受注状況",
+      FStatus2: "配信中",
+      FStatus3: "配信",
+      FStatus4: "署名入り",
+      FStatus5: "払い戻し",
+      FStatus6: "ピックアップ",
+      FStatus: "物流状況"
     }
   }
   
